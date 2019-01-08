@@ -1,0 +1,67 @@
+{
+  "author": "xLsDg <xlsdg@qq.com> (https://blog.xlsdg.org/)",
+  "browser": "dist/ReactIntlTelInput.js",
+  "bugs": {
+    "url": "https://github.com/xlsdg/react-intl-tel-input-v2/issues"
+  },
+  "dependencies": {
+    "lodash-es": "latest"
+  },
+  "description": "React component wrap for intl-tel-input",
+  "devDependencies": {
+    "bili": "^3.4.2",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-alloy": "^1.4.2",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3",
+    "prettier": "^1.15.3",
+    "rollup-plugin-prettier": "^0.5.0",
+    "rollup-plugin-vue": "^4.3.2",
+    "stylelint": "^9.9.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.0.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "homepage": "https://github.com/xlsdg/react-intl-tel-input-v2",
+  "jsdelivr": "dist/ReactIntlTelInput.min.js",
+  "keywords": [
+    "intl-tel-input",
+    "library",
+    "react",
+    "react-intl-tel-input",
+    "react-intl-tel-input-v2"
+  ],
+  "license": "MIT",
+  "main": "dist/ReactIntlTelInput.cjs.js",
+  "module": "dist/ReactIntlTelInput.es.js",
+  "name": "react-intl-tel-input-v2",
+  "peerDependencies": {
+    "react": "latest",
+    "intl-tel-input": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xlsdg/react-intl-tel-input-v2.git"
+  },
+  "scripts": {
+    "build": "bili",
+    "release:major": "npm version major && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:patch": "npm version patch && npm publish"
+  },
+  "source": "src/ReactIntlTelInput.jsx",
+  "unpkg": "dist/ReactIntlTelInput.min.js",
+  "version": "1.0.0"
+}
