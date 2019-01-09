@@ -43,7 +43,6 @@ export default () => {
 ## propTypes
 
 ``` javascript
-className:                PropTypes.string,
 inputProps:               PropTypes.object,
 intlTelOpts:              PropTypes.object,
 value:                    PropTypes.object,
@@ -58,7 +57,6 @@ onCountryDropdownClose:   PropTypes.func,
 ## defaultProps
 
 ``` javascript
-className: null,
 inputProps: {},
 intlTelOpts: {},
 onChange: () => {},
