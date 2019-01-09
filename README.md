@@ -23,7 +23,7 @@ export default () => {
     preferredCountries: ['cn'],
   };
 
-  const value = { dialCode: '86', phone: '12345678901' };
+  const value = { iso2: 'cn', dialCode: '86', phone: '12345678901' };
 
   const onChange = value => console.log(value);
   const onReady = (instance, IntlTelInput) => console.log(instance, IntlTelInput);

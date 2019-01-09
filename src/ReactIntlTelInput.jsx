@@ -49,6 +49,7 @@ export default class ReactIntlTelInput extends React.Component {
     const value = props.value || {};
     this.state = {
       instance: null,
+      iso2: value.iso2 || '',
       dialCode: value.dialCode || '',
       phone: value.phone || '',
     };
@@ -94,9 +95,17 @@ export default class ReactIntlTelInput extends React.Component {
 
   update = () => {
     const that = this;
-    const { instance, dialCode } = that.state;
+    const { instance, iso2, dialCode } = that.state;
 
-    if (!instance || !_isFunction(_get(window, 'intlTelInputGlobals.getCountryData'))) {
+    if (!_isFunction(_get(instance, 'setCountry'))) {
+      return;
+    }
+
+    if (iso2) {
+      return instance.setCountry(iso2);
+    }
+
+    if (!dialCode || !_isFunction(_get(window, 'intlTelInputGlobals.getCountryData'))) {
       return;
     }
 
@@ -104,8 +113,7 @@ export default class ReactIntlTelInput extends React.Component {
     if (_isArray(country) && country.length > 0) {
       for (let i = 0; i < country.length; i++) {
         if (country[i].dialCode === dialCode) {
-          instance.setCountry(country[i].iso2);
-          break;
+          return instance.setCountry(country[i].iso2);
         }
       }
     }
@@ -137,6 +145,7 @@ export default class ReactIntlTelInput extends React.Component {
 
     const country = instance.getSelectedCountryData();
     const dst = {
+      iso2: country.iso2,
       dialCode: country.dialCode,
     };
 
@@ -168,7 +177,7 @@ export default class ReactIntlTelInput extends React.Component {
 
   triggerChange = value => {
     const that = this;
-    const { dialCode, phone } = that.state;
+    const { iso2, dialCode, phone } = that.state;
     const { onChange } = that.props;
 
     if (_isFunction(onChange)) {
@@ -176,6 +185,7 @@ export default class ReactIntlTelInput extends React.Component {
         _assign(
           {},
           {
+            iso2,
             dialCode,
             phone,
           },

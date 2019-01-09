@@ -185,9 +185,18 @@ var ReactIntlTelInput =
 
         var _that$state = that.state,
           instance = _that$state.instance,
+          iso2 = _that$state.iso2,
           dialCode = _that$state.dialCode;
 
-        if (!instance || !_isFunction(_get(window, 'intlTelInputGlobals.getCountryData'))) {
+        if (!_isFunction(_get(instance, 'setCountry'))) {
+          return;
+        }
+
+        if (iso2) {
+          return instance.setCountry(iso2);
+        }
+
+        if (!dialCode || !_isFunction(_get(window, 'intlTelInputGlobals.getCountryData'))) {
           return;
         }
 
@@ -196,8 +205,7 @@ var ReactIntlTelInput =
         if (_isArray(country) && country.length > 0) {
           for (var i = 0; i < country.length; i++) {
             if (country[i].dialCode === dialCode) {
-              instance.setCountry(country[i].iso2);
-              break;
+              return instance.setCountry(country[i].iso2);
             }
           }
         }
@@ -231,6 +239,7 @@ var ReactIntlTelInput =
 
         var country = instance.getSelectedCountryData();
         var dst = {
+          iso2: country.iso2,
           dialCode: country.dialCode,
         };
 
@@ -270,6 +279,7 @@ var ReactIntlTelInput =
         var that = _assertThisInitialized(_assertThisInitialized(_this));
 
         var _that$state2 = that.state,
+          iso2 = _that$state2.iso2,
           dialCode = _that$state2.dialCode,
           phone = _that$state2.phone;
         var onChange = that.props.onChange;
@@ -279,6 +289,7 @@ var ReactIntlTelInput =
             _assign(
               {},
               {
+                iso2: iso2,
                 dialCode: dialCode,
                 phone: phone,
               },
@@ -294,6 +305,7 @@ var ReactIntlTelInput =
 
       _this.state = {
         instance: null,
+        iso2: _value.iso2 || '',
         dialCode: _value.dialCode || '',
         phone: _value.phone || '',
       };
