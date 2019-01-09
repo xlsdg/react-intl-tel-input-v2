@@ -129,6 +129,7 @@ var ReactIntlTelInput =
       {
         key: 'getDerivedStateFromProps',
         // static propTypes = {
+        //   className: PropTypes.string,
         //   inputProps: PropTypes.object,
         //   intlTelOpts: PropTypes.object,
         //   value: PropTypes.object,
@@ -326,6 +327,7 @@ var ReactIntlTelInput =
         value: function render() {
           var that = this;
           var _that$props2 = that.props,
+            className = _that$props2.className,
             inputProps = _that$props2.inputProps,
             value = _that$props2.value;
           var phone = that.state.phone;
@@ -345,17 +347,23 @@ var ReactIntlTelInput =
           };
 
           return React.createElement(
-            'input',
-            _extends(
-              {
-                ref: function ref(e) {
-                  that.dom = e;
+            'div',
+            {
+              className: className,
+            },
+            React.createElement(
+              'input',
+              _extends(
+                {
+                  ref: function ref(e) {
+                    that.dom = e;
+                  },
+                  type: 'tel',
+                  value: phone,
+                  onChange: onChange,
                 },
-                type: 'tel',
-                value: phone,
-                onChange: onChange,
-              },
-              props
+                props
+              )
             )
           );
         },
@@ -366,6 +374,7 @@ var ReactIntlTelInput =
   })(React.Component);
 
 _defineProperty(ReactIntlTelInput, 'defaultProps', {
+  className: null,
   inputProps: {},
   intlTelOpts: {},
   // value: {},

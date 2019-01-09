@@ -10,6 +10,7 @@ import IntlTelInput from 'intl-tel-input';
 
 export default class ReactIntlTelInput extends React.Component {
   // static propTypes = {
+  //   className: PropTypes.string,
   //   inputProps: PropTypes.object,
   //   intlTelOpts: PropTypes.object,
   //   value: PropTypes.object,
@@ -20,6 +21,7 @@ export default class ReactIntlTelInput extends React.Component {
   // };
 
   static defaultProps = {
+    className: null,
     inputProps: {},
     intlTelOpts: {},
     // value: {},
@@ -185,7 +187,7 @@ export default class ReactIntlTelInput extends React.Component {
 
   render() {
     const that = this;
-    const { inputProps, value } = that.props;
+    const { className, inputProps, value } = that.props;
     const { phone } = that.state;
 
     const props = _omit(inputProps, ['ref', 'value', 'onChange']);
@@ -203,15 +205,17 @@ export default class ReactIntlTelInput extends React.Component {
     };
 
     return (
-      <input
-        ref={e => {
-          that.dom = e;
-        }}
-        type="tel"
-        value={phone}
-        onChange={onChange}
-        {...props}
-      />
+      <div className={className}>
+        <input
+          ref={e => {
+            that.dom = e;
+          }}
+          type="tel"
+          value={phone}
+          onChange={onChange}
+          {...props}
+        />
+      </div>
     );
   }
 }
