@@ -299,8 +299,8 @@ var ReactIntlTelInput =
 
       _this.state = {
         instance: null,
-        iso2: _value.iso2 || '',
-        dialCode: _value.dialCode || '',
+        iso2: _value.iso2 || 'cn',
+        dialCode: _value.dialCode || '86',
         phone: _value.phone || '',
       };
       return _this;

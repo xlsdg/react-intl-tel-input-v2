@@ -49,8 +49,8 @@ export default class ReactIntlTelInput extends React.Component {
     const value = props.value || {};
     this.state = {
       instance: null,
-      iso2: value.iso2 || '',
-      dialCode: value.dialCode || '',
+      iso2: value.iso2 || 'cn',
+      dialCode: value.dialCode || '86',
       phone: value.phone || '',
     };
   }
