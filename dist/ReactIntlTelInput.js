@@ -3268,7 +3268,7 @@
           //   onCountryDropdownClose: PropTypes.func,
           // };
           value: function getDerivedStateFromProps(nextProps, prevState) {
-            if (nextProps.value) {
+            if ('value' in nextProps) {
               return Object.assign({}, nextProps.value || {});
             }
 
@@ -3360,7 +3360,6 @@
           var that = _assertThisInitialized(_assertThisInitialized(_this));
 
           var instance = that.state.instance;
-          var value = that.props.value;
 
           if (!instance) {
             return;
@@ -3372,7 +3371,7 @@
             dialCode: country.dialCode,
           };
 
-          if (!value) {
+          if (!('value' in that.props)) {
             that.setState(dst);
           }
 
@@ -3469,8 +3468,7 @@
             var that = this;
             var _that$props2 = that.props,
               className = _that$props2.className,
-              inputProps = _that$props2.inputProps,
-              value = _that$props2.value;
+              inputProps = _that$props2.inputProps;
             var phone = that.state.phone;
 
             var props = omit(inputProps, ['ref', 'value', 'onChange']);
@@ -3480,7 +3478,7 @@
                 phone: event.target.value,
               };
 
-              if (!value) {
+              if (!('value' in that.props)) {
                 that.setState(dst);
               }
 

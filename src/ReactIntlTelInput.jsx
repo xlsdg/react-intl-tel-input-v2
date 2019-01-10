@@ -32,7 +32,7 @@ export default class ReactIntlTelInput extends React.Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.value) {
+    if ('value' in nextProps) {
       return {
         ...(nextProps.value || {}),
       };
@@ -137,7 +137,6 @@ export default class ReactIntlTelInput extends React.Component {
   handleCountryChange = event => {
     const that = this;
     const { instance } = that.state;
-    const { value } = that.props;
 
     if (!instance) {
       return;
@@ -149,7 +148,7 @@ export default class ReactIntlTelInput extends React.Component {
       dialCode: country.dialCode,
     };
 
-    if (!value) {
+    if (!('value' in that.props)) {
       that.setState(dst);
     }
 
@@ -197,7 +196,7 @@ export default class ReactIntlTelInput extends React.Component {
 
   render() {
     const that = this;
-    const { className, inputProps, value } = that.props;
+    const { className, inputProps } = that.props;
     const { phone } = that.state;
 
     const props = _omit(inputProps, ['ref', 'value', 'onChange']);
@@ -207,7 +206,7 @@ export default class ReactIntlTelInput extends React.Component {
         phone: event.target.value,
       };
 
-      if (!value) {
+      if (!('value' in that.props)) {
         that.setState(dst);
       }
 

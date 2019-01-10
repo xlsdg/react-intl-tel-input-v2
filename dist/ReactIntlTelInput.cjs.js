@@ -139,7 +139,7 @@ var ReactIntlTelInput =
         //   onCountryDropdownClose: PropTypes.func,
         // };
         value: function getDerivedStateFromProps(nextProps, prevState) {
-          if (nextProps.value) {
+          if ('value' in nextProps) {
             return Object.assign({}, nextProps.value || {});
           }
 
@@ -231,7 +231,6 @@ var ReactIntlTelInput =
         var that = _assertThisInitialized(_assertThisInitialized(_this));
 
         var instance = that.state.instance;
-        var value = that.props.value;
 
         if (!instance) {
           return;
@@ -243,7 +242,7 @@ var ReactIntlTelInput =
           dialCode: country.dialCode,
         };
 
-        if (!value) {
+        if (!('value' in that.props)) {
           that.setState(dst);
         }
 
@@ -340,8 +339,7 @@ var ReactIntlTelInput =
           var that = this;
           var _that$props2 = that.props,
             className = _that$props2.className,
-            inputProps = _that$props2.inputProps,
-            value = _that$props2.value;
+            inputProps = _that$props2.inputProps;
           var phone = that.state.phone;
 
           var props = _omit(inputProps, ['ref', 'value', 'onChange']);
@@ -351,7 +349,7 @@ var ReactIntlTelInput =
               phone: event.target.value,
             };
 
-            if (!value) {
+            if (!('value' in that.props)) {
               that.setState(dst);
             }
 
